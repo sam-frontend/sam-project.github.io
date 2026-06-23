@@ -1,6 +1,6 @@
 import { HeadContent, Scripts, createRootRoute, Link, Outlet, useRouterState } from '@tanstack/react-router'
 import '../i18n'
-import { Github, Twitter, Linkedin, ArrowUpRight, Globe, Moon, Sun } from 'lucide-react'
+import { Github, Twitter, Linkedin, Globe, Moon, Sun, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChatBot } from '../components/ChatBot'
@@ -49,6 +49,7 @@ function Nav() {
   const location = useRouterState({ select: s => s.location.pathname })
   const { t, i18n } = useTranslation()
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
@@ -77,7 +78,9 @@ function Nav() {
         <Link to="/" className="font-display text-lg tracking-tight" style={{ color: 'var(--fg)' }}>
           Sam<span style={{ color: '#ff5500' }}>.</span>
         </Link>
-        <nav className="flex items-center gap-6">
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map(({ to, labelKey }) => (
             <Link
               key={to}
@@ -119,7 +122,75 @@ function Nav() {
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
         </nav>
+
+        {/* Mobile controls */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="inline-flex items-center justify-center rounded-full border p-2 transition-colors hover:bg-white/5"
+            style={{ borderColor: 'var(--border-light)', color: 'var(--fg)' }}
+            aria-label="Toggle light and dark mode"
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button
+            onClick={() => setMobileOpen(prev => !prev)}
+            className="inline-flex items-center justify-center rounded-full border p-2 transition-colors hover:bg-white/5"
+            style={{ borderColor: 'var(--border-light)', color: 'var(--fg)' }}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <div
+          className="md:hidden"
+          style={{
+            background: 'var(--bg-card)',
+            borderTop: '1px solid var(--border)',
+            padding: '1rem 1.5rem 1.5rem',
+          }}
+        >
+          <nav className="flex flex-col gap-1 mb-4">
+            {NAV_LINKS.map(({ to, labelKey }) => (
+              <Link
+                key={to}
+                to={to}
+                onClick={() => setMobileOpen(false)}
+                className="py-2.5 text-sm font-medium tracking-wide transition-colors rounded"
+                style={{
+                  color: location === to ? '#ff5500' : 'var(--fg-muted)',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >
+                {t(labelKey)}
+              </Link>
+            ))}
+          </nav>
+          <label
+            className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold"
+            style={{ borderColor: 'var(--border-light)', color: 'var(--fg)' }}
+          >
+            <Globe size={14} />
+            <select
+              value={i18n.language}
+              onChange={e => i18n.changeLanguage(e.target.value)}
+              className="bg-transparent text-xs font-semibold outline-none"
+              style={{ color: 'var(--fg)' }}
+              aria-label="Select language"
+            >
+              {LANGUAGE_OPTIONS.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      )}
     </header>
   )
 }
@@ -178,7 +249,7 @@ function Footer() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>

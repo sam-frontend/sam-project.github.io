@@ -84,6 +84,7 @@ html.light {
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg);
 }
 
 body {
