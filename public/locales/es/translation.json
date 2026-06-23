@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "gallery": "Galería",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "eyebrow": "Disponible para trabajo remoto y freelance",
+  "hero": {
+    "line1": "Creativo",
+    "line2": "Desarrollador",
+    "line3": "& Diseñador.",
+    "sub": "Construyo interfaces cuidadosas y experiencias web con alto rendimiento — donde la ingeniería aguda se encuentra con el diseño considerado.",
+    "ctaWork": "Ver mi trabajo",
+    "ctaContact": "Contactar",
+    "scroll": "desplazar"
+  },
+  "selectedWork": "Trabajo seleccionado",
+  "allProjects": "Todos los proyectos",
+  "cta": {
+    "title": "Construyamos algo",
+    "subtitle": "notable juntos.",
+    "start": "Iniciar conversación"
+  },
+  "about": {
+    "eyebrow": "Sobre mí",
+    "titleLine1": "Diseñador,",
+    "titleLine2": "ingeniero,",
+    "titleLine3": "obsesivo."
+  },
+  "contact": {
+    "eyebrow": "Ponte en contacto",
+    "heroTitleLine1": "Trabajemos",
+    "heroTitleLine2": "juntos."
+  },
+  "projects": {
+    "eyebrow": "Portafolio",
+    "title": "Proyectos"
+  }
+}

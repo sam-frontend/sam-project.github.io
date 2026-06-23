@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "gallery": "Gallery",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "eyebrow": "Available for both remote and freelance work",
+  "hero": {
+    "line1": "Creative",
+    "line2": "Developer",
+    "line3": "& Designer.",
+    "sub": "I build thoughtful interfaces and performant web experiences — where sharp engineering meets considered design.",
+    "ctaWork": "View My Work",
+    "ctaContact": "Get in Touch",
+    "scroll": "scroll"
+  },
+  "selectedWork": "Selected Work",
+  "allProjects": "All Projects",
+  "cta": {
+    "title": "Let's build something",
+    "subtitle": "remarkable together.",
+    "start": "Start a Conversation"
+  },
+  "about": {
+    "eyebrow": "About Me",
+    "titleLine1": "Designer,",
+    "titleLine2": "engineer,",
+    "titleLine3": "obsessive."
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "heroTitleLine1": "Let's work",
+    "heroTitleLine2": "together."
+  },
+  "projects": {
+    "eyebrow": "Portfolio",
+    "title": "Projects"
+  }
+}
